@@ -9,11 +9,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 
-app = Flask(__name__)
+myapp = Flask(__name__)
 #app.config['SECRET_KEY'] = 'Secretsecret'
-app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kacperus912@kacpert62200:Kochammatt912@kacpert62200.postgres.database.azure.com/Uzytkownicy'
-app.debug = True
+myapp.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+myapp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kacperus912@kacpert62200:Kochammatt912@kacpert62200.postgres.database.azure.com/Uzytkownicy'
+myapp.debug = True
 #'dbname='User' user='kacperus912@kacpert62200' host='kacpert62200.postgres.database.azure.com' password='Kochammatt912' port='5432' sslmode='true''
 Bootstrap(app)
 db = SQLAlchemy(app)
@@ -53,12 +53,12 @@ class LoginForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(),Length(min=8, max=80)])
 ###############################################
 
-@app.route('/')
+@myapp.route('/')
 def hello():
     return render_template('index.html')
 
 ###############################################
-@app.route('/login', methods=['GET','POST'])
+@myapp.route('/login', methods=['GET','POST'])
 def login():
     form = LoginForm()
 
@@ -76,7 +76,7 @@ def login():
 
 
 ######################################################
-@app.route('/signup',  methods=['GET','POST'])
+@myapp.route('/signup',  methods=['GET','POST'])
 def signup():
     form = RegisterForm()
 
@@ -97,20 +97,20 @@ def signup():
 #####################################################################
 
 
-@app.route('/nowy')
+@myapp.route('/nowy')
 def nowy():
     return render_template('Nowyuzytkownik.html')
 
-@app.route('/dashboard')
+@myapp.route('/dashboard')
 @login_required
 def dashboard():
     return render_template('dashboard.html', name=current_user.username)
 
-@app.route('/blad')
+@myapp.route('/blad')
 def blad():
     return render_template('blad.html')
 
-@app.route('/logout')
+@myapp.route('/logout')
 @login_required
 def logout():
     logout_user()
