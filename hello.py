@@ -36,7 +36,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('remember me')
 
 
-class RegisterForm(FlaskForm):
+#class RegisterForm(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Email(message='Niepoprawny email'), Length(max=50)])
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(),Length(min=8, max=80)])
@@ -106,4 +106,5 @@ def logout():
     return redirect(url_for('index'))
 
 ##############################################################
+
 
