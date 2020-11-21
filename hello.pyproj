@@ -26,6 +26,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="templates\blad.html" />
+    <Content Include="templates\dashboard.html" />
+    <Content Include="templates\index.html" />
+    <Content Include="templates\login.html" />
+    <Content Include="templates\Nowyuzytkownik.html" />
+    <Content Include="templates\signup.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -37,6 +43,9 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
