@@ -5,6 +5,8 @@ from wtforms import StringField, PasswordField, BooleanField
 from flask_sqlalchemy import SQLAlchemy
 from wtforms.validators import InputRequired, Email, Length
 from os import environ
+import hashlib
+import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
@@ -21,6 +23,11 @@ login_manager = LoginManager()
 login_manager.init_app(myapp)
 login_manager.login_view = 'login'
 
+@myapp.route('/')
+
+def hello():
+    return render_template('index.html')
+
 #Stworzenie bazy danych 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,8 +35,7 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
-    def __init__(self, id, username, email, password):
-        self.id = id
+    def __init__(self, username, email, password):
         self.username = username
         self.email = email
         self.password = password
@@ -47,15 +53,12 @@ class LoginForm(FlaskForm):
     remember = BooleanField('remember me')
 
 
-#class RegisterForm(FlaskForm):
+class RegisterForm(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Email(message='Niepoprawny email'), Length(max=50)])
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(),Length(min=8, max=80)])
 ###############################################
 
-@myapp.route('/')
-def index():
-    return render_template('index.html')
 
 ###############################################
 @myapp.route('/login', methods=['GET','POST'])
@@ -97,6 +100,13 @@ def signup():
 #####################################################################
 
 
+
+
+
+
+
+
+
 @myapp.route('/nowy')
 def nowy():
     return render_template('Nowyuzytkownik.html')
@@ -114,7 +124,7 @@ def blad():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('hello'))
 
 ##############################################################
 
