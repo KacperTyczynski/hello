@@ -13,7 +13,7 @@ myapp = Flask(__name__)
 #app.config['SECRET_KEY'] = 'Secretsecret'
 myapp.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 myapp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kacperus912@kacpert62200:Kochammatt912@kacpert62200.postgres.database.azure.com/Uzytkownicy'
-#myapp.debug = True
+myapp.debug = True
 #'dbname='User' user='kacperus912@kacpert62200' host='kacpert62200.postgres.database.azure.com' password='Kochammatt912' port='5432' sslmode='true''
 Bootstrap(myapp)
 db = SQLAlchemy(myapp)
@@ -120,5 +120,5 @@ def logout():
 
 
 
-if __name__ == '_main_':
-    myapp.run(debug=True)
+if __name__ == '__main__':
+    myapp.run()
