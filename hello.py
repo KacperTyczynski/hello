@@ -101,12 +101,6 @@ def signup():
 
 
 
-
-
-
-
-
-
 @myapp.route('/nowy')
 def nowy():
     return render_template('Nowyuzytkownik.html')
