@@ -10,7 +10,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 
 
 myapp = Flask(__name__)
-#app.config['SECRET_KEY'] = 'Secretsecret'
+myapp.config['SECRET_KEY'] = 'Secretsecret'
 myapp.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 myapp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kacperus912@kacpert62200:Kochammatt912@kacpert62200.postgres.database.azure.com/Uzytkownicy'
 myapp.debug = True
@@ -54,7 +54,7 @@ class LoginForm(FlaskForm):
 ###############################################
 
 @myapp.route('/')
-def hello():
+def index():
     return render_template('index.html')
 
 ###############################################
