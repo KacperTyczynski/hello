@@ -5,8 +5,6 @@ from wtforms import StringField, PasswordField, BooleanField
 from flask_sqlalchemy import SQLAlchemy
 from wtforms.validators import InputRequired, Email, Length
 from os import environ
-import hashlib
-import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
