@@ -16,7 +16,7 @@ myapp.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kacperus912@kacpert62200
 #myapp.debug = True
 #'dbname='User' user='kacperus912@kacpert62200' host='kacpert62200.postgres.database.azure.com' password='Kochammatt912' port='5432' sslmode='true''
 Bootstrap(myapp)
-db = SQLAlchemy(myappp)
+db = SQLAlchemy(myapp)
 login_manager = LoginManager()
 login_manager.init_app(myapp)
 login_manager.login_view = 'login'
@@ -120,5 +120,5 @@ def logout():
 
 
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     myapp.run(debug=True)
